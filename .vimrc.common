@@ -152,9 +152,8 @@ set completeopt=menu,longest
 let g:SuperTabLongestHighlight = 1
 let g:SuperTabNoCompleteAfter=[',', '\s', ';', '(', ')', '"', '''', '[', ']', '{', '}']
 let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabContextDefaultCompletionType = "<c-p>"
-"let g:SuperTabContextDiscoverDiscovery = ["&omnifunc:<c-x><c-o>"]
-  autocmd FileType * 
+let g:SuperTabContextDefaultCompletionType = "<C-P>"
+autocmd FileType *
         \if &omnifunc != '' |
         \call SuperTabChain(&omnifunc, "<c-p>") |
         \call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
