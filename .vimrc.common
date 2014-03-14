@@ -2,8 +2,12 @@
 set term=xterm-256color
 set t_Co=256
 
+colorscheme mustang
 filetype plugin indent on	"enable loading plugins for filetype
 syntax on			"enable syntax-hiliting
+set undofile
+set undodir=~/.vim/undodir
+set mouse=a
 set number			"show linenumbers
 set ruler " Show the line and column number of the cursor position, separated by a comma    . Needed by the status-line
 set cmdheight=2 " Command-space is 2 lines so tab-completion doesn't always jump around
@@ -34,38 +38,38 @@ if &term == 'rxvt'
         map <C-?> <C-H>
 endif
 " Some terminals bind the keypad-return to ^[OM instead of ^M
-noremap ^[OM <CR>
-nnoremap ^[OM <CR>
-vnoremap ^[OM <CR>
-onoremap ^[OM <CR>
-inoremap ^[OM <CR>
-lnoremap ^[OM <CR>
-cnoremap ^[OM <CR>
+noremap OM <CR>
+nnoremap OM <CR>
+vnoremap OM <CR>
+onoremap OM <CR>
+inoremap OM <CR>
+lnoremap OM <CR>
+cnoremap OM <CR>
 
 " Terminal-tweaks, don't remember which one is for which
-noremap ^[[1^ <C-Home>
-noremap ^[[4^ <C-End>
-inoremap ^[[1^ <C-Home>
-inoremap ^[[4^ <C-End>
-noremap ^[Oc <C-Right>
-noremap ^[Od <C-Left>
-inoremap ^[Oc <C-Right>
-inoremap ^[Od <C-Left>
+noremap [1^ <C-Home>
+noremap [4^ <C-End>
+inoremap [1^ <C-Home>
+inoremap [4^ <C-End>
+noremap Oc <C-Right>
+noremap Od <C-Left>
+inoremap Oc <C-Right>
+inoremap Od <C-Left>
 
-noremap ^[[1;5H <C-Home>
-noremap ^[[1;5F <C-End>
-inoremap ^[[1;5H <C-Home>
-inoremap ^[[1;5F <C-End>
-nnoremap ^[[1;3D <C-w>-
-nnoremap ^[[1;3C <C-w>+
-inoremap ^[O5C <C-Right>
-inoremap ^[[1;5C <C-Right>
-inoremap ^[O5D <C-Left>
-inoremap ^[[1;5D <C-Left>
-noremap ^[O5C <C-Right>
-noremap ^[[1;5C <C-Right>
-noremap ^[O5D <C-Left>
-noremap ^[[1;5D <C-Left>
+noremap [1;5H <C-Home>
+noremap [1;5F <C-End>
+inoremap [1;5H <C-Home>
+inoremap [1;5F <C-End>
+nnoremap [1;3D <C-w>-
+nnoremap [1;3C <C-w>+
+inoremap O5C <C-Right>
+inoremap [1;5C <C-Right>
+inoremap O5D <C-Left>
+inoremap [1;5D <C-Left>
+noremap O5C <C-Right>
+noremap [1;5C <C-Right>
+noremap O5D <C-Left>
+noremap [1;5D <C-Left>
 
 " Tab goes down one window in normal mode
 nnoremap <Tab> <C-w>w
@@ -76,16 +80,19 @@ nnoremap <S-Tab> <C-w>W
 nnoremap ' `
 
 " Same for different terminals?
-noremap ^[OÁ <C-w><up>
-noremap ^[OÂ <C-w><down>
-noremap ^[[1;3A <C-w><up>
-noremap ^[[1;3B <C-w><down>
+noremap OÁ <C-w><up>
+noremap OÂ <C-w><down>
+noremap [1;3A <C-w><up>
+noremap [1;3B <C-w><down>
 
 " Make up/down-keys go up a visual line and not a code line
 map <silent> OB gj
-imap <silent> OB <C-o>gj
 map <silent> OA gk
-imap <silent> OA <C-o>gk
+
+" Im insert-mode soll es auch so sein, bei einer offenen completion allerdings
+" nicht, sondern dann soll es Eintraege selektieren
+inoremap <silent> OA <c-r>=pumvisible() ? SuperTab('p') : "<C-o>gk"<cr>
+inoremap <silent> OB <c-r>=pumvisible() ? SuperTab('n') : "<C-o>gj"<cr>
 
 " Highlight spaces at the end of the line
 highlight WhitespaceEOL ctermbg=red guibg=red
@@ -109,16 +116,6 @@ hi ShowPairsHLPair ctermbg=red ctermfg=white gui=bold guibg=#ffa000 guifg=#ff000
 noremap <C-c>  :call NERDComment(0, "toggle")<CR>
 vnoremap <C-c> :call NERDComment(0, "toggle")<CR>gv
 
-" Mapping Shift-Home to go to the first char in the line
-vnoremap <S-Home> ^
-nnoremap <S-Home> ^
-inoremap <S-Home> <Esc>I
-
-" Mapping Shift-End to go to the last non-blank char in the line
-vnoremap <S-End> g_
-nnoremap <S-End> g_
-inoremap <S-End> <Esc>g_a
-
 " Fenster sollen (bis auf die Statuszeile) unsichtbar gemacht werden koennen
 set winminheight=0
 
@@ -131,12 +128,6 @@ endif
 let g:showmarks_marks='abcdefghijklmnopqrstuvwxy'.'ABCDEFGHIJKLMNOPQRSTUVWXY'
 " Aktiviert die visuelle Darstellung von marks
 au BufRead * DoShowMarks!
-
-
-colorscheme mustang
-set undofile
-set undodir=~/.vim/undodir
-set mouse=a
 
 " gundo
 let g:gundo_map_move_older = "^[OB"
