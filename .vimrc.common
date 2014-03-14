@@ -34,8 +34,8 @@ set expandtab " Expand tabs to spaces
 set showfulltag " When completing a word in insert mode (see ins-completion) from the tags file, show both the tag name and a tidied-up form of the search pattern (if there is one) as possible matches.
 " Cygwin rxvt vertausc gerne CTRL+Backspace...
 if &term == 'rxvt'
-        map! <C-?> <C-H>
-        map <C-?> <C-H>
+  map! <C-?> <C-H>
+  map <C-?> <C-H>
 endif
 " Some terminals bind the keypad-return to ^[OM instead of ^M
 noremap OM <CR>
@@ -91,8 +91,8 @@ map <silent> OA gk
 
 " Im insert-mode soll es auch so sein, bei einer offenen completion allerdings
 " nicht, sondern dann soll es Eintraege selektieren
-inoremap <silent> OA <c-r>=pumvisible() ? SuperTab('p') : "<C-o>gk"<cr>
-inoremap <silent> OB <c-r>=pumvisible() ? SuperTab('n') : "<C-o>gj"<cr>
+inoremap <silent> OA <c-r>=pumvisible() ? SuperTab('n') : "<C-o>gk"<cr>
+inoremap <silent> OB <c-r>=pumvisible() ? SuperTab('p') : "<C-o>gj"<cr>
 
 " Highlight spaces at the end of the line
 highlight WhitespaceEOL ctermbg=red guibg=red
@@ -101,7 +101,6 @@ match WhitespaceEOL /\s\+$/
 " Tabs sollen speziell markiert werden, da wir tabs im Quellcode nicht nutzen
 syn match Tab " "
 hi def Tab ctermbg=Blue
-
 
 " Keep the selection when usinf < and >
 vnoremap < <gv
@@ -141,11 +140,10 @@ set wildmenu
 set wildmode=list:longest,full
 set completeopt=menu,longest
 let g:SuperTabLongestHighlight = 1
-let g:SuperTabNoCompleteAfter=[',', '\s', ';', '(', ')', '"', '''', '[', ']', '{', '}']
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextDefaultCompletionType = "<C-P>"
 autocmd FileType *
-        \if &omnifunc != '' |
-        \call SuperTabChain(&omnifunc, "<c-p>") |
-        \call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
-        \endif
+      \if &omnifunc != '' |
+      \call SuperTabChain(&omnifunc, "<c-p>") |
+      \call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
+      \endif
