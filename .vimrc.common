@@ -1,0 +1,161 @@
+" Force 256 color terminal
+set term=xterm-256color
+set t_Co=256
+
+filetype plugin indent on	"enable loading plugins for filetype
+syntax on			"enable syntax-hiliting
+set number			"show linenumbers
+set ruler " Show the line and column number of the cursor position, separated by a comma    . Needed by the status-line
+set cmdheight=2 " Command-space is 2 lines so tab-completion doesn't always jump around
+set laststatus=2 " The last active window will be marked specially, even if there only exists one window
+set scrolloff=3 " Minimal number of screen lines to keep above and below the cursor.
+set showcmd " Show (partial) command in the last line of the screen
+set incsearch " Incremental search - While typing a search command, show where the pattern, as it was typed so far, matches.
+set ignorecase " Gross/Kleinschreibung ignorieren
+set smartcase " Gross/Kleinschreibung nicht mehr ignorieren, sobald Grossbuchstaben vorkommen
+set hlsearch " Highlight search matches
+set visualbell " Flash the screen instead of beeping
+set showmode " Show the current mode vim is in
+set expandtab
+set shiftwidth=2
+set tabstop=2
+set smarttab
+set backspace=indent,eol,start " Allows backspace - over autoindent - over line breaks (join lines)- over the start of insert
+set esckeys " Function keys that start with an <Esc> are recognized in Insert mode
+" 'smarttab' 'sta' When on, a <Tab> in front of a line inserts blanks according to 'shiftwidth'. 'tabstop' or 'softtabstop' is used in other places.
+"  A <BS> will delete a 'shiftwidth' worth of space at the start of the line.
+set smarttab
+set autoindent " Autoindent
+set expandtab " Expand tabs to spaces
+set showfulltag " When completing a word in insert mode (see ins-completion) from the tags file, show both the tag name and a tidied-up form of the search pattern (if there is one) as possible matches.
+" Cygwin rxvt vertausc gerne CTRL+Backspace...
+if &term == 'rxvt'
+        map! <C-?> <C-H>
+        map <C-?> <C-H>
+endif
+" Some terminals bind the keypad-return to ^[OM instead of ^M
+noremap ^[OM <CR>
+nnoremap ^[OM <CR>
+vnoremap ^[OM <CR>
+onoremap ^[OM <CR>
+inoremap ^[OM <CR>
+lnoremap ^[OM <CR>
+cnoremap ^[OM <CR>
+
+" Terminal-tweaks, don't remember which one is for which
+noremap ^[[1^ <C-Home>
+noremap ^[[4^ <C-End>
+inoremap ^[[1^ <C-Home>
+inoremap ^[[4^ <C-End>
+noremap ^[Oc <C-Right>
+noremap ^[Od <C-Left>
+inoremap ^[Oc <C-Right>
+inoremap ^[Od <C-Left>
+
+noremap ^[[1;5H <C-Home>
+noremap ^[[1;5F <C-End>
+inoremap ^[[1;5H <C-Home>
+inoremap ^[[1;5F <C-End>
+nnoremap ^[[1;3D <C-w>-
+nnoremap ^[[1;3C <C-w>+
+inoremap ^[O5C <C-Right>
+inoremap ^[[1;5C <C-Right>
+inoremap ^[O5D <C-Left>
+inoremap ^[[1;5D <C-Left>
+noremap ^[O5C <C-Right>
+noremap ^[[1;5C <C-Right>
+noremap ^[O5D <C-Left>
+noremap ^[[1;5D <C-Left>
+
+" Tab goes down one window in normal mode
+nnoremap <Tab> <C-w>w
+" Shift+Tab goes up one window in normal mode
+nnoremap <S-Tab> <C-w>W
+
+" ` merkt sich Spalte und Zeile, ' nur Zeile
+nnoremap ' `
+
+" Same for different terminals?
+noremap ^[OÁ <C-w><up>
+noremap ^[OÂ <C-w><down>
+noremap ^[[1;3A <C-w><up>
+noremap ^[[1;3B <C-w><down>
+
+" Make up/down-keys go up a visual line and not a code line
+map <silent> OB gj
+imap <silent> OB <C-o>gj
+map <silent> OA gk
+imap <silent> OA <C-o>gk
+
+" Highlight spaces at the end of the line
+highlight WhitespaceEOL ctermbg=red guibg=red
+match WhitespaceEOL /\s\+$/
+
+" Tabs sollen speziell markiert werden, da wir tabs im Quellcode nicht nutzen
+syn match Tab " "
+hi def Tab ctermbg=Blue
+
+
+" Keep the selection when usinf < and >
+vnoremap < <gv
+vnoremap > >gv
+" gp selektiert den soeben gepasteten Text
+nnoremap gp `[v`]
+
+" highlighting for bracket-matches
+hi ShowPairsHL ctermbg=red ctermfg=white gui=bold guibg=#ffa000
+hi ShowPairsHLPair ctermbg=red ctermfg=white gui=bold guibg=#ffa000 guifg=#ff0000
+
+noremap <C-c>  :call NERDComment(0, "toggle")<CR>
+vnoremap <C-c> :call NERDComment(0, "toggle")<CR>gv
+
+" Mapping Shift-Home to go to the first char in the line
+vnoremap <S-Home> ^
+nnoremap <S-Home> ^
+inoremap <S-Home> <Esc>I
+
+" Mapping Shift-End to go to the last non-blank char in the line
+vnoremap <S-End> g_
+nnoremap <S-End> g_
+inoremap <S-End> <Esc>g_a
+
+" Fenster sollen (bis auf die Statuszeile) unsichtbar gemacht werden koennen
+set winminheight=0
+
+" Statusline
+if has("statusline")
+  set statusline=%<%f\ %h%m%r%=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"}%k\ %-14.(%l,%c%V%)\ %P
+endif
+
+" Welche Marks sollen angezeigt werden. Ein paar automatische will ich nicht sehen. Wird von DoShowMarks benutzt
+let g:showmarks_marks='abcdefghijklmnopqrstuvwxy'.'ABCDEFGHIJKLMNOPQRSTUVWXY'
+" Aktiviert die visuelle Darstellung von marks
+au BufRead * DoShowMarks!
+
+
+colorscheme mustang
+set undofile
+set undodir=~/.vim/undodir
+set mouse=a
+
+" gundo
+let g:gundo_map_move_older = "^[OB"
+let g:gundo_map_move_newer = "^[OA"
+let g:gundo_preview_bottom = 1
+
+nnoremap <F5> :GundoToggle<CR>
+
+" Tab-Completing-Settings
+set wildmenu
+set wildmode=list:longest,full
+set completeopt=menu,longest
+let g:SuperTabLongestHighlight = 1
+let g:SuperTabNoCompleteAfter=[',', '\s', ';', '(', ')', '"', '''', '[', ']', '{', '}']
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextDefaultCompletionType = "<c-p>"
+"let g:SuperTabContextDiscoverDiscovery = ["&omnifunc:<c-x><c-o>"]
+  autocmd FileType * 
+        \if &omnifunc != '' |
+        \call SuperTabChain(&omnifunc, "<c-p>") |
+        \call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
+        \endif
