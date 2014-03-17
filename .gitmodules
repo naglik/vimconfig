@@ -43,3 +43,9 @@
 [submodule "bundle/vim-showmarks"]
 	path = bundle/vim-showmarks
 	url = https://github.com/jacquesbh/vim-showmarks.git
+[submodule "bundle/tagbar"]
+	path = bundle/tagbar
+	url = https://github.com/majutsushi/tagbar
+[submodule "bundle/matchtit"]
+	path = bundle/matchit
+	url = https://github.com/tmhedberg/matchit
