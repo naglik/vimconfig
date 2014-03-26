@@ -32,6 +32,7 @@ set smarttab
 set autoindent " Autoindent
 set expandtab " Expand tabs to spaces
 set showfulltag " When completing a word in insert mode (see ins-completion) from the tags file, show both the tag name and a tidied-up form of the search pattern (if there is one) as possible matches.
+set noequalalways " Disabled setting high to equal for all remaining buffers after closing a buffer
 " Cygwin rxvt vertausc gerne CTRL+Backspace...
 if &term == 'rxvt'
   map! <C-?> <C-H>
