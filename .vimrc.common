@@ -134,7 +134,7 @@ let g:gundo_map_move_older = "^[OB"
 let g:gundo_map_move_newer = "^[OA"
 let g:gundo_preview_bottom = 1
 
-nnoremap <F5> :GundoToggle<CR>
+nnoremap <F10> :GundoToggle<CR>
 
 " Tab-Completing-Settings
 set wildmenu
@@ -159,4 +159,4 @@ if !exists('*UpdateCtags')
   endfunction
 endif
 
-au BufWriteCmd *.php call UpdateCtags()
+"au BufWriteCmd *.php call UpdateCtags()
