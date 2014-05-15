@@ -5,6 +5,7 @@ set t_Co=256
 colorscheme mustang
 filetype plugin indent on	"enable loading plugins for filetype
 syntax on			"enable syntax-hiliting
+set updatetime=500
 set undofile
 set undodir=~/.vim/undodir
 set mouse=a
