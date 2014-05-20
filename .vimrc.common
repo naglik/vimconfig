@@ -5,6 +5,8 @@ set t_Co=256
 colorscheme mustang
 filetype plugin indent on	"enable loading plugins for filetype
 syntax on			"enable syntax-hiliting
+set history=1000
+set shortmess=aoOtTI
 set updatetime=500
 set undofile
 set undodir=~/.vim/undodir
@@ -80,6 +82,7 @@ nnoremap <S-Tab> <C-w>W
 
 " ` merkt sich Spalte und Zeile, ' nur Zeile
 nnoremap ' `
+nnoremap ` '
 
 " Same for different terminals?
 noremap OÁ <C-w><up>
