@@ -50,6 +50,8 @@ inoremap OM <CR>
 lnoremap OM <CR>
 cnoremap OM <CR>
 
+" insert modus c$
+inoremap [3;5~ <C-O>c$
 " Terminal-tweaks, don't remember which one is for which
 noremap [1^ <C-Home>
 noremap [4^ <C-End>
