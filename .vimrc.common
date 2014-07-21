@@ -180,3 +180,4 @@ if !exists('*UpdateCtags')
 endif
 
 "au BufWriteCmd *.php call UpdateCtags()
+au BufNewFile,BufRead *.html set filetype=smarty
