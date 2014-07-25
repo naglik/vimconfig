@@ -5,6 +5,7 @@ set t_Co=256
 colorscheme mustang
 filetype plugin indent on	"enable loading plugins for filetype
 syntax on			"enable syntax-hiliting
+set iskeyword+=$
 set history=1000
 set shortmess=aoOtTI
 set updatetime=500
