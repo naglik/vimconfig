@@ -55,3 +55,6 @@
 [submodule "bundle/vim-xdebug"]
 	path = bundle/vim-xdebug
 	url = https://github.com/ludovicPelle/vim-xdebug.git
+[submodule "bundle/Align"]
+	path = bundle/Align
+	url = https://github.com/vim-scripts/Align
