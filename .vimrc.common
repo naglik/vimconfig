@@ -51,6 +51,9 @@ inoremap OM <CR>
 lnoremap OM <CR>
 cnoremap OM <CR>
 
+" disable 'Entering Ex mode' in Vim
+map Q <Nop>
+
 " insert modus c$
 inoremap [3;5~ <C-O>c$
 " Terminal-tweaks, don't remember which one is for which
