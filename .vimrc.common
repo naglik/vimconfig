@@ -42,6 +42,10 @@ if &term == 'rxvt'
   map! <C-?> <C-H>
   map <C-?> <C-H>
 endif
+
+" delete words backward in insert modus
+imap <C-?> <C-W>
+
 " Some terminals bind the keypad-return to ^[OM instead of ^M
 noremap OM <CR>
 nnoremap OM <CR>
@@ -185,3 +189,8 @@ endif
 
 "au BufWriteCmd *.php call UpdateCtags()
 au BufNewFile,BufRead *.html set filetype=smarty
+
+" ctrlp plugin config
+let g:ctrlp_by_filename = 1
+let g:ctrlp_cmd = 'CtrlPMixed'
+
