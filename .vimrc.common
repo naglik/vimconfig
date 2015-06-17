@@ -194,3 +194,9 @@ au BufNewFile,BufRead *.html set filetype=smarty
 let g:ctrlp_by_filename = 1
 let g:ctrlp_cmd = 'CtrlPMixed'
 
+" dragvisuals
+let g:DVB_TrimWS = 1
+vmap  <expr>  <C-LEFT>   DVB_Drag('left')
+vmap  <expr>  <C-RIGHT>  DVB_Drag('right')
+vmap  <expr>  <C-DOWN>   DVB_Drag('down')
+vmap  <expr>  <C-UP>     DVB_Drag('up')
