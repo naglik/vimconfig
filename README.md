@@ -14,3 +14,8 @@ Vim 7.4+ Config directory with many usefull plugins.
          source ~/.vim/.vimrc.common
 
 
+SHELL:: git config --global core.excludesfile ~/.gitignore
+and add:
+/tags
+/tags.lock
+/tags.temp
