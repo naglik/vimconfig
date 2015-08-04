@@ -94,6 +94,10 @@ nnoremap <S-Tab> <C-w>W
 nnoremap ' `
 nnoremap ` '
 
+" swap * and g*
+nnoremap * g*
+nnoremap g* /\<<C-R>=expand('<cword>')<CR>\><CR>
+
 " Same for different terminals?
 noremap OÁ <C-w><up>
 noremap OÂ <C-w><down>
@@ -190,9 +194,25 @@ endif
 "au BufWriteCmd *.php call UpdateCtags()
 au BufNewFile,BufRead *.html set filetype=smarty
 
+
+let g:gutentags_exclude = ['*.html', '*.js']
+
 " ctrlp plugin config
 let g:ctrlp_by_filename = 1
 let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_extensions = ['tag', 'buffertag']
+"let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+      "\ --ignore .git
+      "\ --ignore .CVS
+      "\ --ignore .svn
+      "\ --ignore .hg
+      "\ --ignore .DS_Store
+      "\ --ignore tags
+      "\ --ignore "**/*.pyc"
+      "\ --ignore "**/*.log"
+      "\ --ignore "**/*.keepme"
+      "\ --ignore "**/*.pdf"
+      "\ -g ""'
 
 " dragvisuals
 let g:DVB_TrimWS = 1
