@@ -5,12 +5,20 @@ function! GetAbsoluteTranslation(sTranslation)
   let sFile = expand('%:p')
   let sFile = substitute(sFile, "\\.tpl", "", "g")
   let sUserdir = ''
+  let sDir = ''
   if match(sTransKey, ":") >= 0
     return [sUserdir, sTransKey]
   endif
-  let sFile = substitute(sFile, "^/usr/local/domainfactory/templates/km/", "", "")
+  let sFile = substitute(sFile, "^/usr/local/domainfactory/templates/", "", "")
+  if match(sFile, "^km/") >= 0
+    let sFile = substitute(sFile, "km/", "", "")
+    let sDir = "t:"
+  elseif match(sFile, "^order/") >= 0
+    let sFile = substitute(sFile, "order/", "", "")
+    let sDir = "x:order:"
+  endif
   let sFile = substitute(sFile, "/", ":", "g")
-  return [sUserdir, "t:" . sFile . ':' . sTransKey]
+  return [sUserdir, sDir . sFile . ':' . sTransKey]
 endfunction
 
 function! EditTranslation()

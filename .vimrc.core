@@ -30,3 +30,9 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'duggiefresh/vim-easydir'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'jondkinney/dragvisuals.vim'
+Plugin 'danro/rename.vim'
+
+
+"local plugins
+
+Plugin 'file:///root/sources/git/vim_plugins/df_translations'
