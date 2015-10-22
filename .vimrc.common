@@ -198,7 +198,6 @@ au BufNewFile,BufRead *.html set filetype=smarty
 let g:gutentags_exclude = ['*.html', '*.js']
 
 " ctrlp plugin config
-let g:ctrlp_by_filename = 1
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_extensions = ['tag', 'buffertag']
 "let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
