@@ -4,6 +4,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Plugin 'gmarik/vundle'
 
+"github plugins
 Plugin 'sjl/gundo.vim'
 Plugin 'croaker/mustang-vim'
 Plugin 'scrooloose/nerdcommenter'
@@ -32,7 +33,5 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'jondkinney/dragvisuals.vim'
 Plugin 'danro/rename.vim'
 
-
-"local plugins
-
-Plugin 'file:///root/sources/git/vim_plugins/df_translations'
+"ssh plugins
+Plugin 'ssh://git@stash.heg.com:7999/df/vim-df-translations.git'
