@@ -5,7 +5,7 @@ set t_Co=256
 colorscheme mustang
 filetype plugin indent on	"enable loading plugins for filetype
 syntax on			"enable syntax-hiliting
-set iskeyword+=$
+set iskeyword=@,48-57,_,192-255
 set history=1000
 set shortmess=aoOtTI
 set updatetime=500
@@ -108,11 +108,6 @@ noremap [1;3B <C-w><down>
 map <silent> OB gj
 map <silent> OA gk
 
-" Im insert-mode soll es auch so sein, bei einer offenen completion allerdings
-" nicht, sondern dann soll es Eintraege selektieren
-inoremap <silent> OA <c-r>=pumvisible() ? SuperTab('n') : "<C-o>gk"<cr>
-inoremap <silent> OB <c-r>=pumvisible() ? SuperTab('p') : "<C-o>gj"<cr>
-
 " Highlight spaces at the end of the line
 highlight WhitespaceEOL ctermbg=red guibg=red
 match WhitespaceEOL /\s\+$/
@@ -157,10 +152,10 @@ nnoremap <F10> :GundoToggle<CR>
 " Tab-Completing-Settings
 set wildmenu
 set wildmode=list:longest,full
-set completeopt=menu,longest
+"set completeopt=menu,longest
 let g:SuperTabLongestHighlight = 1
 let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabContextDefaultCompletionType = "<C-P>"
+let g:SuperTabContextDefaultCompletionType = "<c-p>"
 autocmd FileType *
       \if &omnifunc != '' |
       \call SuperTabChain(&omnifunc, "<c-p>") |
@@ -195,7 +190,8 @@ endif
 au BufNewFile,BufRead *.html set filetype=smarty
 
 
-let g:gutentags_exclude = ['*.html', '*.js']
+let g:gutentags_exclude = ['*.html', '*.js', '*.xml', '*.txt', '*.pdf', '*.log', '/cache/', '.git', 'cache', 'server/interface']
+let g:gutentags_ctags_executable = "/usr/local/bin/phpctags"
 
 " ctrlp plugin config
 let g:ctrlp_cmd = 'CtrlPMixed'
@@ -219,3 +215,7 @@ vmap  <expr>  <C-LEFT>   DVB_Drag('left')
 vmap  <expr>  <C-RIGHT>  DVB_Drag('right')
 vmap  <expr>  <C-DOWN>   DVB_Drag('down')
 vmap  <expr>  <C-UP>     DVB_Drag('up')
+
+" DF-Translation Plugin config
+nmap <C-K> :call EditTranslation()<CR>
+nmap K :call EditTranslation()<CR>
