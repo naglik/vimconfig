@@ -43,8 +43,16 @@ if &term == 'rxvt'
   map <C-?> <C-H>
 endif
 
+" autofix the common q: misstype
+map q: :q
+
 " delete words backward in insert modus
 imap <C-?> <C-W>
+
+" search with *( or # and then press M to replace the searched query
+nmap <expr>  M ':%s/' . @/ . '//g<LEFT><LEFT>'
+vmap <expr>  M  ':s/' . @/ . '//g<LEFT><LEFT>'
+
 
 " Some terminals bind the keypad-return to ^[OM instead of ^M
 noremap OM <CR>
@@ -155,12 +163,17 @@ set wildmode=list:longest,full
 "set completeopt=menu,longest
 let g:SuperTabLongestHighlight = 1
 let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabContextDefaultCompletionType = "<c-p>"
+let g:SuperTabContextDefaultCompletionType = "<c-x><c-u>"
+let g:SuperTabClosePreviewOnPopupClose = 1
+
 autocmd FileType *
       \if &omnifunc != '' |
       \call SuperTabChain(&omnifunc, "<c-p>") |
       \call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
       \endif
+
+let g:EclimTempFilesEnable = 1
+let g:EclimFileTypeValidate = 0
 
 " This rewires n and N to do the highlighing...
 nnoremap <silent> n   n:call HLNext(0.4)<cr>
@@ -219,3 +232,12 @@ vmap  <expr>  <C-UP>     DVB_Drag('up')
 " DF-Translation Plugin config
 nmap <C-K> :call EditTranslation()<CR>
 nmap K :call EditTranslation()<CR>
+
+" UltiSnips Config
+imap <C-@> <C-Space>
+let g:UltiSnipsJumpForwardTrigger="<C-Space>"
+
+
+let g:pdv_template_dir = $HOME ."/.vim/templates"
+autocmd FileType php nnoremap <buffer> <C-d> :call pdv#DocumentCurrentLine()<CR>a
+autocmd FileType php inoremap <buffer> <C-d> <C-o>:call pdv#DocumentCurrentLine()<CR>
