@@ -204,7 +204,8 @@ au BufNewFile,BufRead *.html set filetype=smarty
 
 
 let g:gutentags_exclude = ['*.html', '*.js', '*.xml', '*.txt', '*.pdf', '*.log', '/cache/', '.git', 'cache', 'server/interface']
-let g:gutentags_ctags_executable = "/usr/local/bin/phpctags"
+"let g:gutentags_ctags_executable = "/usr/local/bin/phpctags"
+let g:gutentags_project_root = ['.project', '.gitignore']
 
 " ctrlp plugin config
 let g:ctrlp_cmd = 'CtrlPMixed'
@@ -241,3 +242,14 @@ let g:UltiSnipsJumpForwardTrigger="<C-Space>"
 let g:pdv_template_dir = $HOME ."/.vim/templates"
 autocmd FileType php nnoremap <buffer> <C-d> :call pdv#DocumentCurrentLine()<CR>a
 autocmd FileType php inoremap <buffer> <C-d> <C-o>:call pdv#DocumentCurrentLine()<CR>
+
+
+let g:airline_powerline_fonts=1
+"let g:airline_theme='papercolor'
+"let g:airline_theme=''
+
+let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
+
+let g:tagbar_autofocus = 1
+map <C-N> :NERDTreeToggle<CR>

@@ -38,6 +38,10 @@ Plugin 'vim-scripts/Decho'
 Plugin 'sirver/ultisnips'
 Plugin 'tobyS/pdv'
 Plugin 'tobyS/vmustache'
+Plugin 'scrooloose/nerdtree'
+Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-scripts/ctags.vim--Johnson'
 
 "Plugin 'rstacruz/vim-closer'
 
