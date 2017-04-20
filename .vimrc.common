@@ -201,6 +201,7 @@ endif
 
 "au BufWriteCmd *.php call UpdateCtags()
 au BufNewFile,BufRead *.html set filetype=smarty
+au BufNewFile,BufRead *.pgsql set filetype=sql
 
 
 let g:gutentags_exclude = ['*.html', '*.js', '*.xml', '*.txt', '*.pdf', '*.log', '/cache/', '.git', 'cache', 'server/interface']
