@@ -46,4 +46,4 @@ Plugin 'vim-scripts/ctags.vim--Johnson'
 "Plugin 'rstacruz/vim-closer'
 
 "ssh plugins
-Plugin 'ssh://git@stash.heg.com:7999/df/vim-df-translations.git'
+Plugin 'ssh://git@stash.emea.godaddy.com:7999/df/vim-df-translations.git'
